@@ -1,22 +1,20 @@
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+
 import React, { useState } from "react";
-import AirlineForm from "./components/AirlineForm.jsx";
-import AirportForm from "./components/AirportForm.jsx";
-import EmployeesForm from "./components//EmployeesForm.jsx";
-import FeeForm from "./components/FeeForm.jsx";
-import FlightForm from "./components/FlightForm.jsx";
-import FlightCrewForm from "./components/FlightCrewForm.jsx";
-import MaintenanceForm from "./components/MaintenanceForm.jsx";
-import PassengerForm from "./components/PassengerForm.jsx";
-import AirplaneForm from "./components/AirPlaneForm.jsx";
-import ReservationForm from "./components//ReservationForm.jsx";
-import DataTable from "../../../../DataTable.jsx";
-import Sidebar from "../../../../Sidebar.jsx";
-import menuOpen from "../public/img/icon-menu.svg";
-import menuClose from "../public/img/icon-menu-close.svg";
+// Design components
+import DataTable from "./components/design/DataTable.jsx";
+import Sidebar from "./components/design/Sidebar.jsx";
+// import Home from "./components/design/Home.jsx";
+// Menu
+import menuOpen from "../img/icon-menu.svg";
+import menuClose from "../img/icon-menu-close.svg";
+import RenderForm from "./components/design/RenderForm.jsx";
 
 export default function App() {
-  const [activeTab, setActiveTab] = useState("aerolinea"); // Estado de menu pestaña activa/inactiva
-  const [isSidebarOpen, setIsSidebarOpen] = useState(true); // Estado para el menu oculto/mostrar
+  const [activeTab, setActiveTab] = useState(''); // Estado de menu pestaña activa/inactiva
+  const [isSidebarOpen, setIsSidebarOpen] = useState(true); // Estado para el menu ocultar/mostrar
+  // const [airlineData, setAirlineData] = useState([]);
+
   const [data, setData] = useState({
     aerolinea: [],
     aeropuerto: [],
@@ -38,65 +36,21 @@ export default function App() {
     }));
   };
 
-  // Renderizamos cada formulario dinamicamente
-  const renderForm = () => {
-    switch (activeTab) {
-      case "aerolinea":
-        return (
-          <AirlineForm onSubmit={(data) => addDataTable("aerolinea", data)} />
-        );
-      case "aeropuerto":
-        return (
-          <AirportForm onSubmit={(data) => addDataTable("aeropuerto", data)} />
-        );
-      case "empleados":
-        return (
-          <EmployeesForm onSubmit={(data) => addDataTable("empleados", data)} />
-        );
-      case "tarifa":
-        return <FeeForm onSubmit={(data) => addDataTable("tarifa", data)} />;
-      case "vuelo":
-        return <FlightForm onSubmit={(data) => addDataTable("vuelo", data)} />;
-      case "tripulación de vuelo":
-        return (
-          <FlightCrewForm
-            onSubmit={(data) => addDataTable("tripulacion_vuelo", data)}
-          />
-        );
-      case "mantenimiento":
-        return (
-          <MaintenanceForm
-            onSubmit={(data) => addDataTable("mantenimiento", data)}
-          />
-        );
-      case "pasajeros":
-        return (
-          <PassengerForm onSubmit={(data) => addDataTable("pasajeros", data)} />
-        );
-      case "avión":
-        return (
-          <AirplaneForm onSubmit={(data) => addDataTable("avion", data)} />
-        );
-      case "reservas":
-        return (
-          <ReservationForm
-            onSubmit={(data) => addDataTable("reservas", data)}
-          />
-        );
-      default:
-        return null;
-    }
-  };
+/*   const handleDataUpdate = (data) => {
+    setAirlineData(data);
+  } */
 
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
   };
 
+
+
   return (
-    <div className="flex min-h-screen lg:justify-self-end p-3 w-screen mt-[rem] border-4 sm:mt-[]">
+    <div className="flex min-h-screen lg:justify-self-end p-3 w-screen mt-[rem] sm:mt-[]">
       <Sidebar isOpen={isSidebarOpen} setActiveTab={setActiveTab} />
       <div className={`flex items-center w-full`}>
-        <div className="container border-2 bg-slate-900 opacity-70 mx-auto sm:w-[65%] p-2 sm:p-0">
+        <div className="container bg-slate-900 opacity-70 mx-auto sm:w-[65%] p-2 sm:p-0">
           {/* Header menu */}
           <div className="flex mx-auto flex-col-reverse w-[100%] sm:w-[50%] sm:flex-row justify-between items-center mb-4">
             <h1 className="text-xl font-bold sm:text-4xl">
@@ -113,7 +67,7 @@ export default function App() {
             )}
             {isSidebarOpen && (
               <button
-                className={"absolute end-0 sm:static  top-6"}
+                className={"absolute w-20 mr-6 sm:w-48 flex flex-col items-center rounded-lg py-2 uppercase transition-colors duration-200 bg-blue-500 hover:bg-blue-600 end-0 sm:static top-6"}
                 onClick={toggleSidebar}
               >
                 <img src={menuClose} alt="Close Menu" />
@@ -128,11 +82,11 @@ export default function App() {
                 Formulario de{" "}
                 {activeTab.charAt(0).toUpperCase() + activeTab.slice(1)}
               </h2>
-              {renderForm()}
+              <RenderForm activeTab={activeTab} addDataTable={addDataTable} />
             </div>
             <div className="w-[100%] mx-auto sm:w-[50%]">
               <h2 className="text-2xl font-bold mb-2">
-                Datos de{" "}
+                Datos de {" "}
                 {activeTab.charAt(0).toUpperCase() + activeTab.slice(1)}
               </h2>
               <DataTable data={data[activeTab]} />
