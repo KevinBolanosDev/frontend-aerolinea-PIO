@@ -85,7 +85,7 @@ export default function Register() {
 
           <p className="flex text-[1.1rem] xl:text-2xl justify-between mt-6">
             ¿Ya tienes una cuenta?{" "}
-            <Link to="/login" className="text-sky-500 hover:text-sky-400">
+            <Link to="/" className="text-sky-500 hover:text-sky-400">
               Iniciar Sesión
             </Link>
           </p>

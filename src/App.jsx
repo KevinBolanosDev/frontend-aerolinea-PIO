@@ -31,7 +31,7 @@ export default function App() {
     <AppProvider>
       <BrowserRouter>
         <Routes>
-          <Route path="/login" element={<LoginPage />} />
+          <Route path="/" element={<LoginPage />} />
           <Route path="/register" element={<Register />} />
           <Route element={<ProtectedRoute />}>
           <Route
