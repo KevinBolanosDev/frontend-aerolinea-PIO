@@ -1,14 +1,14 @@
 // Import Forms
 import AirlineFormPage from "../../pages/AirlineForm.jsx";
-import AirportForm from "../AirportForm.jsx";
-import EmployeesForm from "..//EmployeesForm.jsx";
-import FeeForm from "../FeeForm.jsx";
-import FlightForm from "../FlightForm.jsx";
-import FlightCrewForm from "../FlightCrewForm.jsx";
-import MaintenanceForm from "../MaintenanceForm.jsx";
-import PassengerForm from "../PassengerForm.jsx";
-import AirplaneForm from "../AirPlaneForm.jsx";
-import ReservationForm from "..//ReservationForm.jsx";
+import AirportForm from "../../pages/AirportForm.jsx";
+import EmployeesForm from "../../pages/EmployeesForm.jsx";
+import FeeForm from "../../pages/FeeForm.jsx";
+import FlightForm from "../../pages/FlightForm.jsx";
+import FlightCrewForm from "../../pages/FlightCrewForm.jsx";
+import MaintenanceForm from "../../pages/MaintenanceForm.jsx";
+import PassengerForm from "../../pages/PassengerForm.jsx";
+import AirplaneFormPage from "../../pages/AirplaneForm.jsx";
+import ReservationForm from "../../pages/ReservationForm.jsx";
 
 // Renderizamos cada formulario dinamicamente
 export default function RenderForm({ addDataTable, activeTab }){
@@ -47,7 +47,7 @@ export default function RenderForm({ addDataTable, activeTab }){
         );
       case "avión":
         return (
-          <AirplaneForm onSubmit={(data) => addDataTable("avion", data)} />
+          <AirplaneFormPage onSubmit={(data) => addDataTable("avion", data)} />
         );
       case "reservas":
         return (

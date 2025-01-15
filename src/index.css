@@ -6,6 +6,7 @@
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
+  scrollbar-width: none;
 
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
@@ -17,7 +18,15 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* @aplly */
+/* @apply -> y estilos */
+
+form {
+  @apply w-[65%] mx-auto;
+}
+
+input, select {
+  @apply rounded-md;
+}
 
 /* .sidebar_scrol::-webkit-scrollbar {
   width: 18px;

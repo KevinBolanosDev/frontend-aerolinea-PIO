@@ -1,6 +1,7 @@
 import axios from "./axios.js";
 
 export const airlineApi = {
+  
   getAll: async () => {
     const response = await axios.get('/airline');
     return response.data;
@@ -19,5 +20,10 @@ export const airlineApi = {
   delete: async (id) => {
     const response = await axios.delete(`/airline/${id}`);
     return response.data;
+  },
+
+  search: async () => {
+    const response = await axios.get(`/airline/`);
+    return response.data;
   }
-}; 
+};

@@ -22,6 +22,7 @@ export default function AirportForm({}) {
   };
 
   return (
+    <>
     <form onSubmit={handleSubmit(FormSubmit)} className="space-y-4">
       {error && <div className="text-red-500">{error}</div>}
       <div>
@@ -168,7 +169,10 @@ export default function AirportForm({}) {
       <h2 className="text-2xl font-bold mb-2">
         Datos de {activeTab.charAt(0).toUpperCase() + activeTab.slice(1)}
       </h2>
-      <DataTable data={airport} />
     </form>
+      <div>
+      <DataTable data={airport} />
+      </div>
+    </>
   );
 }
